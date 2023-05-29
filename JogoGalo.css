@@ -1,0 +1,115 @@
+@import url('https://fonts.googleapis.com/css2?family=Passion+One:wght@700&display=swap');
+
+#jog{
+    width: 270px;
+    height: 270px;
+    display: flex;
+    flex-wrap:wrap; /* passa para baixo */
+    align-content: flex-start;
+}
+
+.jogogalo{
+    width: 30%;
+    height: 30%;
+    margin: 0px;
+    padding: 0px;
+    cursor: pointer; /* mãozinha*/
+    display: flex;
+    /* border: 1px solid #000; */
+    text-align: center;
+    justify-content: center;
+    font-size: 75px;
+}
+
+#tab1{
+    border-right: 1px solid #000;
+    border-bottom: 1px solid #000;/* na parte de baixo*/
+    text-align: center;
+}
+
+#tab2{
+    border-left: 1px solid #000;
+    border-right: 1px solid #000;
+    border-bottom: 1px solid #000;/* na parte de baixo*/
+}
+
+#tab3{
+    border-left: 1px solid #000;
+    border-bottom: 1px solid #000;/* na parte de baixo*/
+}
+
+#tab4{
+    border-right: 1px solid #000;
+    border-top: 1px solid #000;
+    border-bottom: 1px solid #000;/* na parte de baixo*/
+}
+
+#tab5{
+    border: 1px solid #000;
+}
+
+#tab6{
+    border-left: 1px solid #000;
+    border-top: 1px solid #000;
+    border-bottom: 1px solid #000;/* na parte de baixo*/
+}
+
+#tab7{
+    border-right: 1px solid #000;
+    border-top: 1px solid #000;/* na parte de baixo*/
+}
+#tab8{
+    border-left: 1px solid #000;
+    border-right: 1px solid #000;
+    border-top: 1px solid #000;/* na parte de baixo*/
+}
+
+#tab9{
+    border-left: 1px solid #000;
+    border-top: 1px solid #000;/* na parte de baixo*/
+}
+
+.textoprincipal{
+    margin-top: 40px;
+    font-family: 'Passion One', cursive;
+    font-size: 40px;
+}
+
+.fundo{
+    margin-top: 10%;
+    margin-bottom: 25%;
+    background-color:beige;
+    margin-left: 40%;
+    margin-right: 35%;
+}
+
+
+.back{
+    background-color:#B0E0E6;
+}
+
+.centralizar{
+    text-align: center;
+}
+
+.h1{
+    text-align: center;
+    margin-top: 10%;
+}
+
+.bot{
+    margin-top: 10%;
+    margin-bottom: 10%;
+    display: inline-block;
+    padding: 15px 25px;
+    font-size: 20px;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    outline: none;
+    color: #fff;
+    background-color:steelblue;
+    border: none;
+    border-radius: 15px;
+    box-shadow: 0 9px #999;
+}

@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="JogoGalo.css">
+    <title></title>
+</head>
+
+<body class="back">
+    <h1 class="h1">Escolha a posição do tabuleiro para iniciar o jogo</h1>
+    <div class="fundo">
+        <center>
+            <p class="textoprincipal">Jogo do Galo</p><br>
+            <div id="jog">
+                <!-- coordenadas das células no tabuleiro-->
+                <div id="tab1" class="jogogalo" onclick="jog(0, 0)"></div>
+                <div id="tab2" class="jogogalo" onclick="jog(0, 1)"></div>
+                <div id="tab3" class="jogogalo" onclick="jog(0, 2)"></div>
+                <div id="tab4" class="jogogalo" onclick="jog(1, 0)"></div>
+                <div id="tab5" class="jogogalo" onclick="jog(1, 1)"></div>
+                <div id="tab6" class="jogogalo" onclick="jog(1, 2)"></div>
+                <div id="tab7" class="jogogalo" onclick="jog(2, 0)"></div>
+                <div id="tab8" class="jogogalo" onclick="jog(2, 1)"></div>
+                <div id="tab9" class="jogogalo" onclick="jog(2, 2)"></div>
+            </div>
+            <div>
+                <input class= "bot" type="button" onclick="reiniciar()" value="Reiniciar"></input>
+            </div>
+        </center>
+        <!-- <div id="mensagem-vencedor"></div> -->
+    </div>
+
+
+    
+    <script>
+        
+        var preenchertab = [[-1, -1, -1], [-1, -1, -1], [-1, -1, -1]]; 
+        //para criar matriz 3X3, com os elementos inicializados em -1 para representar uma posição vazia no tabuleiro. 
+        //a primeira camada de colchetes duplos representa as linhas da matriz, a segunda camada representa as colunas
+        var jog1 = 0; //atribuindo valor para jog1
+        var jog2 = 1; //atribuindo valor para jog 2
+        var jogAtual = jog1;//para iniciar no jog1
+        var play = true; //enquanto jogador estiver jogando
+        var vencedor = -1;
+        var numCasas= 9; //9 para ter o total das jogadas
+        var numJogadas= 0;//para contar a partir da primeira jogada
+
+        function jog(linha, coluna) 
+        {
+            if (!play) 
+            {
+                return;
+            }
+
+            if (preenchertab[linha][coluna] !== -1) 
+            {
+                return;
+            }
+
+            preenchertab[linha][coluna] = jogAtual;
+            numJogadas++; //para atualizar cada jogada realizada
+            document.getElementById("tab" + ((linha * 3) + coluna + 1)).innerHTML = jogAtual === jog1 ? "X" : "O";
+
+            if (verificarVencedor()) //chamando a função
+            {
+                vencedor = jogAtual;
+                play = false;
+                alert("Jogador " + (vencedor === jog1 ? "X" : "O") + " ganhou!");
+                // var mensagem = vencedor + " ganhou!";
+                // document.getElementById("mensagem-vencedor").textContent = mensagem;
+                //: operador ternário, para abreviar o if-else, sintase: condition ? expr1 : expr2
+            } else if (numJogadas === numCasas) 
+            {  
+                play = false;
+                alert("Empate!");
+                return;                                                                   
+            }
+
+            jogAtual = jogAtual === jog1 ? jog2 : jog1;
+            //=== boas práticas em js **fonte https://code.tutsplus.com/pt/tutorials/24-javascript-best-practices-for-beginners--net-5399
+
+            function verificarVencedor() 
+            {
+                //para verificar linhas
+                for (var i = 0; i < 3; i++) 
+                {
+                    if (preenchertab[i][0] !== -1 && preenchertab[i][0] === preenchertab[i][1] && preenchertab[i][1] === preenchertab[i][2]) 
+                    {
+                        return true;
+                    }
+                }
+
+                // verificar colunas
+                for (var j = 0; j < 3; j++) 
+                {
+                    if (preenchertab[0][j] !== -1 && preenchertab[0][j] === preenchertab[1][j] && preenchertab[1][j] === preenchertab[2][j]) 
+                    {
+                        return true;
+                    }
+                }
+
+                // verificar diagonais
+                if (preenchertab[0][0] !== -1 && preenchertab[0][0] === preenchertab[1][1] && preenchertab[1][1] === preenchertab[2][2]) 
+                {
+                    return true;
+                }
+                if (preenchertab[0][2] !== -1 && preenchertab[0][2] === preenchertab[1][1] && preenchertab[1][1] === preenchertab[2][0]) 
+                {
+                    return true;
+                }
+
+                return false;
+            }
+
+        }
+
+        function reiniciar()
+        {
+            window.location.reload();
+            //recomendado para programas pequenos
+        }
+
+    </script>
+</body>
+</html>
